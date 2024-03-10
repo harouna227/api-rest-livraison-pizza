@@ -46,5 +46,7 @@ class CustomerUser(AbstractUser):
     # Les champs requis lors de la creation un user
     REQUIRED_FIELDS = ['username', 'phone_number']
 
+    objects=UserManager()
+
     def __str__(self):
         return self.email
