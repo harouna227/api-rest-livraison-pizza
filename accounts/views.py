@@ -2,17 +2,16 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 
+from drf_yasg.utils import swagger_auto_schema
+
 from .serializers import UserCreationSerializer
 
 # Create your views here.
-class HelloAuth(generics.GenericAPIView):
-    def get(self, request):
-        return Response(data={'hello': 'Salut'}, status=status.HTTP_200_OK)
-    
 
 class UserCreateView(generics.GenericAPIView):
     serializer_class = UserCreationSerializer
 
+    @swagger_auto_schema(operation_summary='Create a user accounts')
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():

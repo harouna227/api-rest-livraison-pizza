@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'djoser',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -133,4 +134,14 @@ SIMPLE_JWT = {
    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
    "BLACKLIST_AFTER_ROTATION": False,
+}
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
 }
